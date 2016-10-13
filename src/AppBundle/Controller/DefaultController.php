@@ -10,6 +10,7 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/old", name="homepage_old")
+     * TODO: remove it later
      */
     public function indexOldAction(Request $request)
     {
