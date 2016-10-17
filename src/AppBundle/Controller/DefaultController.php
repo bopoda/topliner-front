@@ -21,7 +21,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Это будет вывод главной страницы.
+     * Main page action (homepage)
      *
      * @Route("/", name="homepage")
      */

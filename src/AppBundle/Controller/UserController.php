@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 class UserController extends Controller
 {
     /**
-     * @Route ("/login", name="login")
+     * @Route ("/user/login", name="userLogin")
      */
     public function loginAction()
     {
