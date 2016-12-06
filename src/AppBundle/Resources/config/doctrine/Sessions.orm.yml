@@ -1,0 +1,27 @@
+AppBundle\Entity\Sessions:
+    type: entity
+    table: sessions
+    id:
+        id:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        userId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            column: user_id
+        validUntil:
+            type: datetime
+            nullable: false
+            options:
+                default: '0000-00-00 00:00:00'
+            column: valid_until
+    lifecycleCallbacks: {  }

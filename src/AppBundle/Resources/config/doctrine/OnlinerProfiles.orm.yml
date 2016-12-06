@@ -1,0 +1,146 @@
+AppBundle\Entity\OnlinerProfiles:
+    type: entity
+    table: onliner__profiles
+    indexes:
+        onl_username:
+            columns:
+                - onl_username
+    id:
+        onlUserId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: onl_user_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        onlUsername:
+            type: string
+            nullable: true
+            length: 32
+            options:
+                fixed: false
+            column: onl_username
+        onlBanned:
+            type: boolean
+            nullable: false
+            options:
+                default: '0'
+            column: onl_banned
+        onlRegisteredAt:
+            type: date
+            nullable: true
+            column: onl_registered_at
+        onlCity:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: onl_city
+        onlOccupation:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: onl_occupation
+        onlInterests:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: onl_interests
+        onlBirthday:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: onl_birthday
+        onlEmail:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: onl_email
+        onlJabber:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: onl_jabber
+        onlIcq:
+            type: string
+            nullable: true
+            length: 32
+            options:
+                fixed: false
+            column: onl_icq
+        onlSkype:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: onl_skype
+        onlAim:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: onl_aim
+        onlSite:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: onl_site
+        onlBlog:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: onl_blog
+        onlDevices:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: onl_devices
+        onlCommentatorsRating:
+            type: integer
+            nullable: true
+            options:
+                unsigned: true
+            column: onl_commentators_rating
+        onlCards:
+            type: boolean
+            nullable: false
+            options:
+                default: '0'
+            column: onl_cards
+        addedAt:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: added_at
+        enqueuedAt:
+            type: datetime
+            nullable: true
+            column: enqueued_at
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
+    lifecycleCallbacks: {  }

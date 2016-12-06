@@ -1,0 +1,92 @@
+AppBundle\Entity\Users:
+    type: entity
+    table: users
+    uniqueConstraints:
+        email:
+            columns:
+                - email
+        twitter_token:
+            columns:
+                - twitter_token
+        facebook_token:
+            columns:
+                - facebook_token
+        google_token:
+            columns:
+                - google_token
+        onl_username:
+            columns:
+                - onl_username
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        email:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        name:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        onlUsername:
+            type: string
+            nullable: true
+            length: 32
+            options:
+                fixed: false
+            column: onl_username
+        passwordHash:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: true
+            column: password_hash
+        twitterToken:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: twitter_token
+        facebookToken:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: facebook_token
+        googleToken:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: google_token
+        notifications:
+            type: boolean
+            nullable: false
+            options:
+                default: '0'
+        addedAt:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: added_at
+        latestActivity:
+            type: datetime
+            nullable: true
+            column: latest_activity
+    lifecycleCallbacks: {  }

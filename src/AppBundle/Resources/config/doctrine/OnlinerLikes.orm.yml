@@ -1,0 +1,32 @@
+AppBundle\Entity\OnlinerLikes:
+    type: entity
+    table: onliner__likes
+    id:
+        postId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: post_id
+        onlCommentId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: onl_comment_id
+    fields:
+        onlCounter:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            column: onl_counter
+        updatedAt:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: updated_at
+    lifecycleCallbacks: {  }

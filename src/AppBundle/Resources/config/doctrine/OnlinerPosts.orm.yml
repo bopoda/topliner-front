@@ -1,0 +1,112 @@
+AppBundle\Entity\OnlinerPosts:
+    type: entity
+    table: onliner__posts
+    uniqueConstraints:
+        onl_link_hash:
+            columns:
+                - onl_link_hash
+        project_onl_post_id:
+            columns:
+                - project
+                - onl_post_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        project:
+            type: string
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        onlPostId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            column: onl_post_id
+        onlLink:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: onl_link
+        onlLinkHash:
+            type: binary
+            nullable: false
+            column: onl_link_hash
+        onlCaption:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: onl_caption
+        onlImage:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: onl_image
+        onlAuthor:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: onl_author
+        onlPublishedAt:
+            type: datetime
+            nullable: true
+            column: onl_published_at
+        onlCountComments:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                default: '0'
+            column: onl_count_comments
+        onlCountViews:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                default: '0'
+            column: onl_count_views
+        onlShortText:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: onl_short_text
+        onlText:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: onl_text
+        addedAt:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: added_at
+        enqueuedAt:
+            type: datetime
+            nullable: true
+            column: enqueued_at
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
+    lifecycleCallbacks: {  }

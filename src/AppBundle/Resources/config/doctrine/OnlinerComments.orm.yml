@@ -1,0 +1,88 @@
+AppBundle\Entity\OnlinerComments:
+    type: entity
+    table: onliner__comments
+    indexes:
+        onl_user_id:
+            columns:
+                - onl_user_id
+    uniqueConstraints:
+        post_id_onl_comment_id:
+            columns:
+                - post_id
+                - onl_comment_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        postId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            column: post_id
+        onlCommentId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            column: onl_comment_id
+        onlUserId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            column: onl_user_id
+        onlPublishedAt:
+            type: datetime
+            nullable: true
+            column: onl_published_at
+        onlCensored:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: onl_censored
+        onlRemoved:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: onl_removed
+        onlLikesCount:
+            type: integer
+            nullable: true
+            options:
+                unsigned: true
+                default: '0'
+            column: onl_likes_count
+        onlComment:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: onl_comment
+        onlCommentCensored:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: onl_comment_censored
+        addedAt:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: added_at
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
+    lifecycleCallbacks: {  }

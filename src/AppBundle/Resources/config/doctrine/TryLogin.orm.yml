@@ -1,0 +1,57 @@
+AppBundle\Entity\TryLogin:
+    type: entity
+    table: try_login
+    uniqueConstraints:
+        login_data:
+            columns:
+                - username
+                - password
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        username:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+        password:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                fixed: false
+        retries:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                default: '1'
+        ip:
+            type: integer
+            nullable: true
+            options:
+                unsigned: true
+        addedAt:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: added_at
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
+        status:
+            type: boolean
+            nullable: false
+            options:
+                default: '0'
+    lifecycleCallbacks: {  }
