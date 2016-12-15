@@ -13,6 +13,7 @@ class UserController extends Controller
      */
     public function loginAction()
     {
+//        $r = $this->getDoctrine()->getRepository('AppBundle:OnlinerPosts')->findOneBy(['id' => 1]);
         return $this->render('user/login.html.twig', array(
 
         ));
