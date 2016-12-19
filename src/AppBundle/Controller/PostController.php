@@ -9,18 +9,18 @@ use Symfony\Component\HttpFoundation\Request;
 class PostController extends Controller
 {
     /**
-     * @Route ("/posts/{project}", name="onlPostsByProject")
+     * @Route ("/posts/{project}", name="showOnlPostsByProject")
      */
-    public function onlPostsByProjectAction($project)
+    public function showOnlPostsByProjectAction($project)
     {
         $onlPosts = $this->getDoctrine()->getRepository('AppBundle:OnlinerPosts')->findBy([
             'project' => $project
         ], [], 20);
 
-        return $this->render('onlPost/list.html.twig', [
-            'onlPosts' => $onlPosts,
-            'project' => $project,
-        ]);
+        return $this->render('onlPost/list.html.twig', compact(
+            'onlPosts',
+            'project'
+        ));
     }
 
     /**
