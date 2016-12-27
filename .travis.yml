@@ -9,6 +9,7 @@ php:
 install:
   - mysql -uroot -e "create database topliner"
   - composer install -n
+  - bin/provision/db
 
 script:
   - phpunit
