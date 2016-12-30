@@ -34,5 +34,8 @@ function import_data()
 
 ls -1 $DB_DIR | while read DB; do
     echo "Provisioning database $DB...";
+    echo "DROP DATABASE IF EXISTS $DB" | mysql -h127.0.0.1 -uroot;
+    echo "CREATE DATABASE $DB" | mysql -h127.0.0.1 -uroot;
+    ls -1 $DB_DIR/$DB/schema/*.sql | while read file; do import_table; done
     ls -1 $DB_DIR/$DB/data/*.sql.bz2 | while read file; do import_data; done
 done;
