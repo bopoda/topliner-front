@@ -1,0 +1,17 @@
+<div class="itemdiv">
+    <div class="caption">
+        <h2><a href="{{ path('onlPostView', {'postId': onlPost.id}) }}">{{ onlPost.onlCaption }}</a></h2>
+    </div>
+    <div class="brief">
+        {% if onlPost.onlImage %}
+            <p><a href="{{ path('onlPostView', {'postId': onlPost.id}) }}"><img src="{{ onlPost.onlImage }}" alt="{{ onlPost.onlCaption }}"/></a></p>
+        {% endif %}
+
+        {{ onlPost.onlShortText|raw }}
+    </div>
+    <div class="publish">
+        Комментариев: <span class="green">{{ onlPost.onlCountComments }}</span>
+        <span class="grey pull-right">{{ onlPost.onlPublishedAt|date}}</span>
+    </div>
+</div>
+<div class="hr hr12 dotted"></div>

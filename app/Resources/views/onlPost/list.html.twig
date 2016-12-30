@@ -1,0 +1,38 @@
+{% extends 'main-layout.html.twig' %}
+
+{% block title %} {{ project }} Посты — Topliner {% endblock %}
+
+{% block pageContent %}
+    <div class="page-header">
+        <h1>
+            {{ project }}
+        </h1>
+    </div><!-- /.page-header -->
+
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+            <div class="row onl-post-briefs">
+                <div class="col-sm-7">
+                    {% if onlPosts %}
+                        {% for onlPost in onlPosts %}
+                            {% include 'onlPost/parts/part-post-itemdiv.html.twig' %}
+                        {% endfor %}
+                    {% else %}
+                        <p>Нет постов в этой категории</p>
+                    {% endif %}
+                </div>
+            </div>
+            <!-- PAGE CONTENT ENDS -->
+        </div>
+    </div><!-- /.row -->
+{% endblock %}
+
+{% block stylesheets %}
+    <style></style>
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+

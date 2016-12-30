@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Go to this script directory
+cd `cd -P "$( dirname "$0" )" && pwd`
+
+# obtain a top level git
+cd `git rev-parse --show-toplevel`
+
+DB_DIR=var/db
+TEST_DB_NAME=test
+
+# set max_allowed_packet to 20M
+mysql -uroot -e'SET GLOBAL max_allowed_packet=41943040'
+mysql -uroot -e "SET @@global.sql_mode = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION'"
+
+#creating database for tests
+echo "DROP DATABASE IF EXISTS $TEST_DB_NAME" | mysql -h127.0.0.1 -uroot;
+echo "CREATE DATABASE $TEST_DB_NAME" | mysql -h127.0.0.1 -uroot;
+
+function import_table()
+{
+	echo "  Creating `basename $file`"
+
+	cat $file | mysql -h127.0.0.1 -uroot $TEST_DB_NAME;
+	cat $file | mysql -h127.0.0.1 -uroot $DB;
+}
+
+function import_data()
+{
+	echo "  Importing `basename $file`"
+
+	bzcat -f $file | mysql -h127.0.0.1 -uroot $DB;
+}
+
+ls -1 $DB_DIR | while read DB; do
+    echo "Provisioning database $DB...";
+    echo "DROP DATABASE IF EXISTS $DB" | mysql -h127.0.0.1 -uroot;
+    echo "CREATE DATABASE $DB" | mysql -h127.0.0.1 -uroot;
+    ls -1 $DB_DIR/$DB/schema/*.sql | while read file; do import_table; done
+    ls -1 $DB_DIR/$DB/data/*.sql.bz2 | while read file; do import_data; done
+done;

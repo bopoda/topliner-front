@@ -1,0 +1,21 @@
+CREATE TABLE `onliner__posts` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `project` enum('tech','auto','people','realt') DEFAULT NULL,
+  `onl_post_id` int(10) unsigned NOT NULL,
+  `onl_link` varchar(255) NOT NULL,
+  `onl_link_hash` binary(16) NOT NULL,
+  `onl_caption` varchar(255) NOT NULL,
+  `onl_image` varchar(255) NOT NULL,
+  `onl_author` varchar(100) DEFAULT NULL,
+  `onl_published_at` timestamp NULL DEFAULT NULL,
+  `onl_count_comments` int(10) unsigned NOT NULL DEFAULT '0',
+  `onl_count_views` int(10) unsigned NOT NULL DEFAULT '0',
+  `onl_short_text` text,
+  `onl_text` text,
+  `added_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `enqueued_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `onl_link_hash` (`onl_link_hash`),
+  UNIQUE KEY `project_onl_post_id` (`project`,`onl_post_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8
