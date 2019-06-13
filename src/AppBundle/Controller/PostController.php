@@ -30,4 +30,16 @@ class PostController extends Controller
     {
 
     }
+
+    public function testJenkinsCI()
+    {
+        $string = 'string';
+
+        if ($string){
+            $style = 'bad';
+        return false;
+        }
+
+            return   true;
+    }
 }
